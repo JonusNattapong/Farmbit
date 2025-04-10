@@ -14,15 +14,14 @@ var zombie_spawn_chances = {
     "boss": 5
 }
 
-# References
-var zombie_scene = preload("res://scenes/Zombie.tscn")
-var boss_zombie_scene = preload("res://scenes/BossZombie.tscn")
 var active_zombies = []
 var current_night = 0
 var can_spawn = false
+var zombie_scene = preload("res://scenes/Zombie.tscn")
+var boss_zombie_scene = preload("res://scenes/BossZombie.tscn")
 
-onready var spawn_timer = $SpawnTimer
 onready var player = get_node("../Player")  # Assuming player is sibling node
+onready var spawn_timer = $SpawnTimer
 
 func _ready():
     # Connect to time signals
@@ -84,6 +83,10 @@ func spawn_zombie():
     match zombie_type:
         "boss":
             zombie = boss_zombie_scene.instance()
+            zombie.max_health *= 1.2
+            zombie.current_health = zombie.max_health
+            zombie.damage *= 1.1
+            zombie.move_speed *= 1.1
         _:
             zombie = zombie_scene.instance()
             if zombie_type == "special":

@@ -1,0 +1,93 @@
+[gd_scene format=2]
+
+[node name="Farm" type="Node2D"]
+
+[node name="Ground" type="TileMap" parent="."]
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Crops" type="Node2D" parent="."]
+
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="House" type="Sprite" parent="Buildings"]
+position = Vector2( 200, 150 )
+
+[node name="Barn" type="Sprite" parent="Buildings"]
+position = Vector2( 350, 200 )
+
+[node name="Coop" type="Sprite" parent="Buildings"]
+position = Vector2( 150, 250 )
+
+[node name="Animals" type="YSort" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 250, 250 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeDisplay" type="Label" parent="CanvasLayer/UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 24.0
+text = "6:00 AM - Spring 1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnergyBar" type="ProgressBar" parent="CanvasLayer/UI"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 150.0
+margin_bottom = 24.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnergyLabel" type="Label" parent="CanvasLayer/UI/EnergyBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Energy: 100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolBar" type="HBoxContainer" parent="CanvasLayer/UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+margin_bottom = -10.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirectionalLight2D" type="Light2D" parent="."]
+position = Vector2( 250, 250 )
+texture_scale = 5.0
+energy = 0.8

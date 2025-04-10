@@ -1,0 +1,97 @@
+[gd_scene format=2]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.129412, 0.396078, 0.207843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.0
+margin_top = 100.0
+margin_right = 200.0
+margin_bottom = 150.0
+text = "FARMBIT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -50.0
+margin_right = 100.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameButton" type="Button" parent="ButtonContainer"]
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="ButtonContainer"]
+margin_top = 44.0
+margin_right = 200.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 40 )
+text = "Load Game"
+
+[node name="OptionsButton" type="Button" parent="ButtonContainer"]
+margin_top = 88.0
+margin_right = 200.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 40 )
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer"]
+margin_top = 132.0
+margin_right = 200.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 0, 40 )
+text = "Quit"
+
+[node name="VersionLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -30.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "v0.1.0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CopyrightLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -30.0
+margin_right = 200.0
+margin_bottom = -10.0
+text = "© 2025 Farmbit"
+__meta__ = {
+"_edit_use_anchors_": false
+}

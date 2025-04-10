@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/Farm.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/InventoryUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/TimeManager.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Events.gd" type="Script" id=5]
+[ext_resource path="res://scenes/ShippingBin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/NPC.gd" type="Script" id=7]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=8]
+[ext_resource path="res://scenes/DialogueUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/ZombieSpawner.gd" type="Script" id=10]
+[ext_resource path="res://scenes/GameUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/QuestUI.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/WeatherEffects.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/PetUI.tscn" type="PackedScene" id=14]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Farm" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+
+[node name="ShippingBin" parent="." instance=ExtResource( 6 )]
+position = Vector2( 800, 200 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, 300 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2(0.8, 0.8)
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
+[node name="HomeEntrance" type="Area2D" parent="."]
+position = Vector2( 400, 200 )
+
+[node name="Sprite" type="ColorRect" parent="HomeEntrance"]
+margin_right = 32
+margin_bottom = 64
+color = Color( 0.4, 0.2, 0.0, 1.0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeEntrance"]
+position = Vector2( 16, 32 )
+
+[node name="HintLabel" type="Label" parent="HomeEntrance"]
+margin_left = -32
+margin_top = -24
+margin_right = 64
+margin_bottom = -8
+text = "Press SPACE to enter"
+align = 1
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Farmer" type="KinematicBody2D" parent="NPCs"]
+position = Vector2( 500, 300 )
+script = ExtResource( 7 )
+npc_id = "farmer"
+npc_name = "Farmer"
+
+[node name="Merchant" type="KinematicBody2D" parent="NPCs"]
+position = Vector2( 700, 400 )
+script = ExtResource( 7 )
+npc_id = "merchant" 
+npc_name = "Merchant"
+
+[node name="ZombieSpawner" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="SpawnTimer" type="Timer" parent="ZombieSpawner"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WeatherEffects" parent="CanvasLayer" instance=ExtResource( 13 )]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="DialogueUI" parent="CanvasLayer" instance=ExtResource( 9 )]
+
+[node name="QuestUI" parent="CanvasLayer" instance=ExtResource( 12 )]
+visible = false
+
+[node name="PetUI" parent="CanvasLayer" instance=ExtResource( 14 )]
+visible = false
+
+[node name="TimeManager" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Events" type="Node" parent="."]
+script = ExtResource( 5 )

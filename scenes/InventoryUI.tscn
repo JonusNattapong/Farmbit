@@ -1,0 +1,117 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/InventoryUI.gd" type="Script" id=1]
+
+[node name="InventoryUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -200.0
+margin_right = 350.0
+margin_bottom = 200.0
+
+[node name="TitleLabel" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -150.0
+margin_top = 10.0
+margin_right = 150.0
+margin_bottom = 24.0
+text = "Inventory"
+align = 1
+
+[node name="MoneyLabel" type="Label" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 10.0
+margin_right = -20.0
+margin_bottom = 24.0
+text = "Gold: 500"
+align = 2
+
+[node name="CloseButton" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 30.0
+text = "X"
+
+[node name="ItemGrid" type="GridContainer" parent="Panel"]
+margin_left = 20.0
+margin_top = 40.0
+margin_right = 680.0
+margin_bottom = 360.0
+columns = 8
+
+[node name="ItemDetailsPanel" type="Panel" parent="Panel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -110.0
+margin_right = 200.0
+margin_bottom = -20.0
+
+[node name="ItemName" type="Label" parent="Panel/ItemDetailsPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 10.0
+margin_right = 180.0
+margin_bottom = 24.0
+text = "Item Name"
+align = 1
+
+[node name="ItemDescription" type="Label" parent="Panel/ItemDetailsPanel"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 30.0
+margin_right = -10.0
+margin_bottom = 60.0
+text = "Item description goes here. This will show details about the selected item."
+autowrap = true
+
+[node name="UseButton" type="Button" parent="Panel/ItemDetailsPanel"]
+margin_left = 20.0
+margin_top = 65.0
+margin_right = 80.0
+margin_bottom = 85.0
+text = "Use"
+
+[node name="DropButton" type="Button" parent="Panel/ItemDetailsPanel"]
+margin_left = 100.0
+margin_top = 65.0
+margin_right = 160.0
+margin_bottom = 85.0
+text = "Drop"
+
+[node name="GiftButton" type="Button" parent="Panel/ItemDetailsPanel"]
+margin_left = 180.0
+margin_top = 65.0
+margin_right = 240.0
+margin_bottom = 85.0
+text = "Gift"
+
+[node name="SellButton" type="Button" parent="Panel/ItemDetailsPanel"]
+margin_left = 260.0
+margin_top = 65.0
+margin_right = 320.0
+margin_bottom = 85.0
+text = "Sell"

@@ -1,0 +1,194 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/SkillsUI.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.901961)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color(0.290196, 0.290196, 0.290196, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color(0.45098, 0.45098, 0.45098, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="SkillsUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Background" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400
+margin_top = -250
+margin_right = 400
+margin_bottom = 250
+custom_styles/panel = SubResource( 1 )
+
+[node name="Title" type="Label" parent="Background"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100
+margin_top = 10
+margin_right = 100
+margin_bottom = 30
+text = "Skills"
+align = 1
+valign = 1
+
+[node name="SkillPoints" type="Label" parent="Background"]
+margin_left = 20
+margin_top = 10
+margin_right = 200
+margin_bottom = 30
+text = "Skill Points: 0"
+
+[node name="TabContainer" type="TabContainer" parent="Background"]
+anchor_right = 0.45
+anchor_bottom = 0.9
+margin_left = 20
+margin_top = 40
+margin_right = -20
+margin_bottom = -20
+custom_styles/panel = SubResource( 2 )
+
+[node name="Combat" type="ScrollContainer" parent="Background/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4
+margin_top = 32
+margin_right = -4
+margin_bottom = -4
+custom_styles/bg = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/TabContainer/Combat"]
+margin_right = 316
+margin_bottom = 404
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Farming" type="ScrollContainer" parent="Background/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4
+margin_top = 32
+margin_right = -4
+margin_bottom = -4
+custom_styles/bg = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/TabContainer/Farming"]
+margin_right = 316
+margin_bottom = 404
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Cooking" type="ScrollContainer" parent="Background/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4
+margin_top = 32
+margin_right = -4
+margin_bottom = -4
+custom_styles/bg = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/TabContainer/Cooking"]
+margin_right = 316
+margin_bottom = 404
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="SkillInfoPanel" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.9
+margin_left = 20
+margin_top = 40
+margin_right = -20
+margin_bottom = -20
+custom_styles/panel = SubResource( 4 )
+
+[node name="SkillName" type="Label" parent="Background/SkillInfoPanel"]
+margin_left = 10
+margin_top = 10
+margin_right = 350
+margin_bottom = 30
+text = "Skill Name"
+align = 1
+
+[node name="Level" type="Label" parent="Background/SkillInfoPanel"]
+margin_left = 10
+margin_top = 40
+margin_right = 350
+margin_bottom = 60
+text = "Level 1"
+
+[node name="Description" type="Label" parent="Background/SkillInfoPanel"]
+margin_left = 10
+margin_top = 70
+margin_right = 350
+margin_bottom = 120
+text = "Skill description goes here..."
+autowrap = true
+
+[node name="Effects" type="Label" parent="Background/SkillInfoPanel"]
+margin_left = 10
+margin_top = 130
+margin_right = 350
+margin_bottom = 230
+text = "Current Effects:"
+autowrap = true
+
+[node name="NextLevel" type="Label" parent="Background/SkillInfoPanel"]
+margin_left = 10
+margin_top = 240
+margin_right = 350
+margin_bottom = 340
+text = "Next Level:"
+autowrap = true
+
+[node name="UpgradeButton" type="Button" parent="Background/SkillInfoPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50
+margin_top = -40
+margin_right = 50
+margin_bottom = -10
+disabled = true
+text = "Upgrade"
+
+[node name="CloseButton" type="Button" parent="Background"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30
+margin_top = 10
+margin_right = -10
+margin_bottom = 30
+text = "X"
+
+[connection signal="pressed" from="Background/SkillInfoPanel/UpgradeButton" to="." method="_on_upgrade_pressed"]
+[connection signal="pressed" from="Background/CloseButton" to="." method="hide"]
